@@ -94,7 +94,7 @@ export function Services() {
                                                             {tag}
                                                         </span>
                                                     ))}
-                                                    <span className="w-8 h-8 rounded-full bg-neutral-800 text-xs flex items-center justify-center">{Math.floor(Math.random() * 5) + 3}+</span>
+                                                    <span className="w-8 h-8 rounded-full bg-neutral-800 text-xs flex items-center justify-center">{service.tags.length}+</span>
                                                 </div>
                                             </div>
                                         </div>
