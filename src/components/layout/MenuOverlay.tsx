@@ -19,7 +19,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 bg-[#f5f5f5] text-[#0a0a0a] flex flex-col pt-20 px-4 md:px-6 pb-6 overflow-y-auto"
+            className="fixed top-0 left-0 right-0 h-[75vh] z-40 bg-[#f5f5f5] text-[#0a0a0a] flex flex-col pt-20 px-4 md:px-6 pb-6 overflow-y-auto"
         >
             <nav className="flex-1 flex flex-col items-center justify-center gap-4">
                 {navLinks.map((link, i) => (

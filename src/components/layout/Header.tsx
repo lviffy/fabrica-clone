@@ -8,7 +8,6 @@ import { MenuOverlay } from "./MenuOverlay";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
-
     // Toggle scrolling
     useEffect(() => {
         if (isOpen) {
@@ -25,25 +24,40 @@ export function Header() {
         <>
             <header
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex items-center justify-between pointer-events-none mix-blend-difference text-white"
+                    "fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between bg-white text-black px-4 md:px-10 py-3"
                 )}
             >
-                <Link href="/" className="pointer-events-auto">
-                    <span className="font-sans font-semibold text-xl tracking-tighter">
+                {/* Logo */}
+                <Link href="/" className="pointer-events-auto inline-block">
+                    <span className="font-sans font-bold text-xl tracking-tighter leading-none">
                         fabrica®
                     </span>
                 </Link>
 
+                {/* Navigation Links - Centered */}
+                <nav className="hidden md:flex flex-1 items-center justify-around mx-8">
+                    <Link href="#" className="hover:opacity-70 transition-opacity text-sm font-medium leading-none">Studio</Link>
+                    <Link href="#" className="hover:opacity-70 transition-opacity relative text-sm font-medium leading-none">
+                        Projects
+                        <span className="absolute -top-1 -right-3 text-[10px] opacity-60">27</span>
+                    </Link>
+                    <Link href="#" className="hover:opacity-70 transition-opacity text-sm font-medium leading-none">Blog</Link>
+                    <Link href="#" className="hover:opacity-70 transition-opacity text-sm font-medium leading-none">Contact</Link>
+                </nav>
+
                 {/* Menu Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="pointer-events-auto flex items-center justify-center w-[30px] h-[30px] rounded-[15px] bg-neutral-900/80 backdrop-blur-md border border-white/10 text-white group"
+                    className="pointer-events-auto flex flex-col gap-[6px] w-[30px] h-[20px] group justify-center items-center relative"
                 >
-                    <div className="flex flex-col gap-[4px] items-center justify-center">
-                        {/* Hamburger Icon */}
-                        <div className={cn("w-3 h-[1px] bg-current transition-all", isOpen && "rotate-45 translate-y-[2.5px]")} />
-                        <div className={cn("w-3 h-[1px] bg-current transition-all", isOpen && "-rotate-45 -translate-y-[2.5px]")} />
-                    </div>
+                    <div className={cn(
+                        "w-[24px] h-[2px] bg-current absolute transition-transform duration-300",
+                        isOpen ? "rotate-45" : "-translate-y-[4px]"
+                    )} />
+                    <div className={cn(
+                        "w-[24px] h-[2px] bg-current absolute transition-transform duration-300",
+                        isOpen ? "-rotate-45" : "translate-y-[4px]"
+                    )} />
                 </button>
             </header>
 
