@@ -7,111 +7,107 @@ export function Hero() {
     return (
         <section className="relative px-2 pt-[48px] pb-2">
             {/* Main Container with rounded corners */}
-            <div className="relative w-full min-h-[90vh] rounded-[30px] md:rounded-[40px] overflow-hidden flex flex-col justify-between p-6 md:p-12 text-white">
+            <div className="relative w-full min-h-[calc(100vh-56px)] rounded-[30px] md:rounded-[40px] overflow-hidden flex flex-col justify-between p-6 md:p-10 text-white">
 
                 {/* Background Video inside the container */}
                 <div className="absolute inset-0 -z-20">
                     <video
-                        src="https://framerusercontent.com/assets/G0NwzP4bivPvK55b3ubxNslUs.mp4"
+                        src="/fabrica.mp4"
                         poster="https://framerusercontent.com/images/ZJ6HLYoAxMXsbBJCnggXHSRug.jpg"
                         autoPlay
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover filter grayscale opacity-70"
+                        className="w-full h-full object-cover filter grayscale opacity-50"
                     />
                 </div>
+                {/* Dark Overlay for better contrast */}
+                <div className="absolute inset-0 -z-15 bg-black/55"></div>
                 {/* Noise Overlay */}
                 <div
-                    className="absolute inset-0 -z-10 opacity-[0.05] pointer-events-none"
+                    className="absolute inset-0 -z-10 opacity-[0.03] pointer-events-none"
                     style={{ backgroundImage: 'url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png")' }}
                 ></div>
 
                 {/* Main Content */}
-                <div className="w-full flex-1 flex flex-col pt-10">
-                    {/* Title Area */}
-                    <div className="w-full relative">
-                        <h1 className="text-[24vw] leading-[0.75] font-bold tracking-tighter uppercase font-sans text-white mx-[-2vw]">
-                            fabrica
-                        </h1>
-                        {/* Registered Symbol */}
-                        <div className="absolute top-[8%] right-[12%] w-[12vw] h-[12vw] border-[0.8vw] border-white rounded-full flex items-center justify-center">
-                            <span className="text-[8vw] font-bold leading-none translate-y-[-5%] font-sans">R</span>
+                <div className="w-full flex-1 flex flex-col relative">
+                    {/* Title Area - fabrica® with inline circled R */}
+                    <div className="w-full mt-4 md:mt-8 relative z-10">
+                        <div className="flex items-start">
+                            <h1 className="text-[20vw] md:text-[17vw] leading-[0.85] font-bold tracking-[-0.04em] lowercase font-sans text-white">
+                                fabrica
+                            </h1>
+                            {/* Circled R - smaller and positioned at top right of text */}
+                            <div className="relative flex items-center justify-center w-[9vw] md:w-[7vw] h-[9vw] md:h-[7vw] border-[0.4vw] border-white rounded-full mt-[0.5vw] ml-[0.5vw]">
+                                <span className="text-[5vw] md:text-[4vw] font-bold leading-none">R</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="w-full grid grid-cols-12 gap-4 mt-8 relative">
-                        {/* Grid Markers */}
-                        <div className="absolute -top-12 left-0 w-full flex justify-between px-2 text-white/50 text-2xl font-light">
-                            <span>+</span>
-                            <span>+</span>
-                            <span>+</span>
-                            <span>+</span>
-                        </div>
-
-                        {/* Studio Text */}
-                        <div className="col-span-12 md:col-span-6 flex justify-center md:justify-end pr-[10vw]">
-                            <span className="text-[8vw] font-semibold tracking-tighter leading-none -mt-[4vw]">Studio</span>
-                        </div>
-
-                        {/* Right column placeholder/spacer */}
-                        <div className="col-span-6 hidden md:block"></div>
+                    {/* Studio Text - positioned center-right, no overlap */}
+                    <div className="w-full flex justify-center md:justify-center md:pl-[15vw] mt-[1vw] md:mt-[0.5vw]">
+                        <span
+                            className="text-[12vw] md:text-[8vw] font-normal tracking-[-0.02em] leading-none"
+                            style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontStyle: 'italic' }}
+                        >
+                            Studio
+                        </span>
                     </div>
 
-                    {/* Content Grid */}
-                    <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto pb-12 items-end">
-                        {/* Left Text */}
-                        <div className="col-span-12 md:col-span-5 relative">
-                            {/* Marker above text */}
-                            <div className="absolute -top-24 left-0 text-white/50 text-2xl font-light">+</div>
+                    {/* Services List - positioned on the right */}
+                    <div className="absolute top-[5%] md:top-[15%] right-0 md:right-4 text-right flex flex-col gap-1 text-sm md:text-base font-medium leading-relaxed">
+                        <p className="text-white/90">Branding and Identity</p>
+                        <p className="text-white/90">Social Media Marketing</p>
+                        <p className="text-white/90">Web Design and Development</p>
+                        <p className="text-white/90">SEO Optimization</p>
+                    </div>
 
-                            <h3 className="text-xl md:text-2xl font-medium leading-tight tracking-tight max-w-md">
-                                No generic websites. No empty <br />
-                                <span className="font-bold text-white">marketing promises.</span> <span className="text-neutral-400">Just tools and strategies that help your business grow and your brand shine.</span>
-                            </h3>
-                            <div className="mt-6 text-xs text-neutral-500 font-mono">
-                                © 2025 fabrica® Studio
-                            </div>
+                    {/* Grid Markers / Plus Signs - Row 1 */}
+                    <div className="absolute bottom-[25%] left-0 right-0 flex justify-between px-4 md:px-8 text-white/30 text-lg md:text-xl font-light pointer-events-none">
+                        <span>+</span>
+                        <span>+</span>
+                        <span>+</span>
+                        <span>+</span>
+                    </div>
+                </div>
+
+                {/* Bottom Content Grid */}
+                <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-end mt-auto">
+                    {/* Left Text - Tagline */}
+                    <div className="col-span-12 md:col-span-4">
+                        <p className="text-sm md:text-[15px] leading-relaxed tracking-tight max-w-[280px]">
+                            <span className="text-white font-bold">No generic websites. No empty marketing promises.</span>{" "}
+                            <span className="text-white/60 font-normal">Just tools and strategies that help your business grow and your brand shine.</span>
+                        </p>
+                    </div>
+
+                    {/* Center - Copyright */}
+                    <div className="col-span-12 md:col-span-4 flex justify-center">
+                        <div className="text-xs text-white/40 font-medium">
+                            © 2025 fabrica® Studio
                         </div>
+                    </div>
 
-                        {/* Center Spacer / Marker */}
-                        <div className="col-span-12 md:col-span-2 flex justify-center items-end pb-24 relative">
-                            <div className="absolute top-0 text-white/50 text-2xl font-light">+</div>
-                        </div>
-
-                        {/* Right Side: Services & Card */}
-                        <div className="col-span-12 md:col-span-5 flex flex-col items-end gap-20 relative">
-                            {/* Services List */}
-                            <div className="text-right flex flex-col gap-1 text-base md:text-lg font-medium leading-relaxed mr-12">
-                                <p>Branding and Identity</p>
-                                <p>Social Media Marketing</p>
-                                <p>Web Design and Development</p>
-                                <p>SEO Optimization</p>
+                    {/* Right Side: Team Card */}
+                    <div className="col-span-12 md:col-span-4 flex justify-end">
+                        <div className="bg-white rounded-[18px] p-2 pr-4 flex items-center gap-3 shadow-xl">
+                            <div className="relative w-14 h-[70px] rounded-[12px] overflow-hidden shrink-0 bg-neutral-200">
+                                <Image
+                                    src="https://framerusercontent.com/images/XBirhPxPnqDiGkAtvDrRCiK4pS8.jpg"
+                                    alt="Team Lead"
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
+                            <div className="flex flex-col justify-center">
+                                <div className="text-[8px] font-bold text-neutral-700 uppercase tracking-wider">Team Lead</div>
+                                <div className="text-[8px] text-neutral-400 font-medium">at fabrica®</div>
+                                <div className="text-sm font-bold text-black tracking-tight leading-tight mt-0.5 mb-1.5">Lauren Thompson</div>
 
-                            {/* Marker above card */}
-                            <div className="absolute top-0 right-full mr-12 text-white/50 text-2xl font-light">+</div>
-
-                            {/* Team Card */}
-                            <div className="bg-white rounded-[24px] p-2 pr-6 flex items-center gap-5 max-w-sm">
-                                <div className="relative w-20 h-24 rounded-[18px] overflow-hidden shrink-0 bg-neutral-200">
-                                    <Image
-                                        src="https://framerusercontent.com/images/XBirhPxPnqDiGkAtvDrRCiK4pS8.jpg"
-                                        alt="Team Lead"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex flex-col justify-center min-w-[140px]">
-                                    <div className="text-[11px] font-bold text-black uppercase tracking-wide mb-0.5">Team Lead</div>
-                                    <div className="text-[10px] text-neutral-400 font-bold mb-1">at fabrica®</div>
-                                    <div className="text-xl font-bold text-black tracking-tight leading-none mb-3">Lauren Thompson</div>
-
-                                    <button className="bg-black text-white text-[10px] font-bold rounded-full py-1.5 px-4 flex items-center justify-between w-28 group hover:bg-neutral-800 transition-colors">
-                                        <span>Let's talk</span>
-                                        <div className="w-1.5 h-1.5 rounded-full bg-white ml-2" />
-                                    </button>
-                                </div>
+                                <button className="bg-black text-white text-[8px] font-semibold rounded-full py-1 px-2.5 flex items-center gap-2 group hover:bg-neutral-800 transition-colors w-fit">
+                                    <span>Let's talk</span>
+                                    <div className="w-1 h-1 rounded-full bg-white" />
+                                </button>
                             </div>
                         </div>
                     </div>
