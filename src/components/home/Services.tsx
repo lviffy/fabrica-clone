@@ -59,8 +59,33 @@ export function Services() {
 
     return (
         <section className="px-1.5 -mt-10 z-20 relative">
-            <div className="py-24 px-6 md:px-10 bg-[#0a0a0a] text-white rounded-[20px] md:rounded-[24px]">
-                <div className="max-w-[1400px] mx-auto">
+            <div className="py-32 md:py-48 px-6 md:px-10 bg-[#0a0a0a] text-white rounded-[20px] md:rounded-[24px] relative overflow-hidden">
+                {/* Noise Overlay */}
+                <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+                    <div
+                        className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%]"
+                        style={{
+                            backgroundImage: 'url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png")',
+                            animation: 'grain 8s steps(10) infinite'
+                        }}
+                    />
+                </div>
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    @keyframes grain {
+                        0%, 100% { transform: translate(0, 0); }
+                        10% { transform: translate(-5%, -10%); }
+                        20% { transform: translate(-15%, 5%); }
+                        30% { transform: translate(7%, -25%); }
+                        40% { transform: translate(-5%, 25%); }
+                        50% { transform: translate(-15%, 10%); }
+                        60% { transform: translate(15%, 0%); }
+                        70% { transform: translate(0%, 15%); }
+                        80% { transform: translate(3%, 35%); }
+                        90% { transform: translate(-10%, 10%); }
+                    }
+                `}} />
+                <div className="max-w-[1312px] mx-auto px-4 relative z-10">
                     {/* Header */}
                     <div className="flex justify-between items-start mb-16">
                         {/* Left - What we do label */}
@@ -190,6 +215,12 @@ export function Services() {
                                 </AnimatePresence>
                             </div>
                         ))}
+                    </div>
+
+                    <div className="mt-32 flex justify-start">
+                        <button className="bg-white text-black text-sm font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-colors">
+                            Get started
+                        </button>
                     </div>
                 </div >
             </div >
