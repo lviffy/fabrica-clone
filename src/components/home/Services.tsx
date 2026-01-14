@@ -58,33 +58,28 @@ export function Services() {
     };
 
     return (
-        <section className="px-1.5 -mt-10 z-20 relative">
+        <section className="px-1.5 -mt-10 z-20 relative" style={{ overflowAnchor: "none" }}>
             <div className="py-32 md:py-48 px-6 md:px-10 bg-[#0a0a0a] text-white rounded-[20px] md:rounded-[24px] relative overflow-hidden">
                 {/* Noise Overlay */}
                 <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-                    <div
+                    <motion.div
                         className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%]"
                         style={{
                             backgroundImage: 'url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png")',
-                            animation: 'grain 8s steps(10) infinite'
+                        }}
+                        animate={{
+                            x: ["0%", "-10%", "10%", "-5%", "5%"],
+                            y: ["0%", "10%", "-5%", "5%", "-10%"],
+                        }}
+                        transition={{
+                            duration: 0.2,
+                            repeat: Infinity,
+                            repeatType: "mirror",
+                            ease: "linear",
                         }}
                     />
                 </div>
-                <style dangerouslySetInnerHTML={{
-                    __html: `
-                    @keyframes grain {
-                        0%, 100% { transform: translate(0, 0); }
-                        10% { transform: translate(-5%, -10%); }
-                        20% { transform: translate(-15%, 5%); }
-                        30% { transform: translate(7%, -25%); }
-                        40% { transform: translate(-5%, 25%); }
-                        50% { transform: translate(-15%, 10%); }
-                        60% { transform: translate(15%, 0%); }
-                        70% { transform: translate(0%, 15%); }
-                        80% { transform: translate(3%, 35%); }
-                        90% { transform: translate(-10%, 10%); }
-                    }
-                `}} />
+
                 <div className="max-w-[1312px] mx-auto px-4 relative z-10">
                     {/* Header */}
                     <div className="flex justify-between items-start mb-16">
@@ -113,7 +108,11 @@ export function Services() {
                     {/* Services Accordion */}
                     <div className="flex flex-col">
                         {services.map((service) => (
-                            <div key={service.id} className="border-t border-white/10 last:border-b">
+                            <motion.div
+                                layout
+                                key={service.id}
+                                className="border-t border-white/10 last:border-b"
+                            >
                                 <button
                                     onClick={() => toggleService(service.id)}
                                     className="w-full py-6 flex items-center justify-between gap-4 text-left group"
@@ -121,11 +120,12 @@ export function Services() {
                                     {/* Left side - Number and Title (when collapsed) */}
                                     <div className="flex items-center gap-6">
                                         <span className="text-white/40 text-sm font-mono">({service.id})</span>
-                                        {!openIds.has(service.id) && (
-                                            <h3 className="text-xl md:text-2xl font-semibold tracking-tight group-hover:opacity-70 transition-opacity">
-                                                {service.title}
-                                            </h3>
-                                        )}
+                                        <h3 className={cn(
+                                            "text-xl md:text-2xl font-semibold tracking-tight transition-all duration-500",
+                                            openIds.has(service.id) ? "opacity-0 blur-sm" : "opacity-100 group-hover:opacity-70"
+                                        )}>
+                                            {service.title}
+                                        </h3>
                                     </div>
 
                                     {/* Right side - Expand/Collapse button */}
@@ -145,13 +145,13 @@ export function Services() {
                                     </div>
                                 </button>
 
-                                <AnimatePresence>
+                                <AnimatePresence initial={false}>
                                     {openIds.has(service.id) && (
                                         <motion.div
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: "auto", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
                                             className="overflow-hidden"
                                         >
                                             <div className="pb-8 pt-2 grid grid-cols-12 gap-6 items-start">
@@ -213,7 +213,7 @@ export function Services() {
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
 
