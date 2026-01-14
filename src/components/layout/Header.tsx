@@ -8,23 +8,23 @@ import { MenuOverlay } from "./MenuOverlay";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    // Toggle scrolling
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [isOpen]);
+    // Toggle scrolling removed to keep scrollbar visible as per user request
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         document.body.style.overflow = "hidden";
+    //     } else {
+    //         document.body.style.overflow = "";
+    //     }
+    //     return () => {
+    //         document.body.style.overflow = "";
+    //     };
+    // }, [isOpen]);
 
     return (
         <>
             <header
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between bg-background text-black px-4 md:px-10 py-3"
+                    "fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between bg-[#f5f5f5] text-black px-4 md:px-10 py-3"
                 )}
             >
                 {/* Logo */}
@@ -35,7 +35,10 @@ export function Header() {
                 </Link>
 
                 {/* Navigation Links - Centered */}
-                <nav className="hidden md:flex flex-1 items-center justify-around mx-8">
+                <nav className={cn(
+                    "hidden md:flex flex-1 items-center justify-around mx-8 transition-opacity duration-300",
+                    isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+                )}>
                     <Link href="#" className="hover:opacity-70 transition-opacity text-sm font-medium leading-none">Studio</Link>
                     <Link href="#" className="hover:opacity-70 transition-opacity relative text-sm font-medium leading-none">
                         Projects

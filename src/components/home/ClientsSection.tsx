@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { SiNike, SiSony, SiSamsung, SiLg, SiPanasonic, SiPuma, SiAdidas } from "react-icons/si";
+import { SiNike, SiSony, SiSamsung, SiLg, SiPanasonic, SiPuma } from "react-icons/si";
 
 const CLIENTS = [
     { name: "Nike", icon: SiNike },
@@ -11,9 +11,6 @@ const CLIENTS = [
     { name: "LG", icon: SiLg },
     { name: "Panasonic", icon: SiPanasonic },
     { name: "Puma", icon: SiPuma },
-    { name: "Adidas", icon: SiAdidas },
-    { name: "Nike", icon: SiNike },
-    { name: "Sony", icon: SiSony },
 ];
 
 export function ClientsSection() {
@@ -32,11 +29,11 @@ export function ClientsSection() {
     return (
         <section
             ref={containerRef}
-            className="w-full pb-20 pt-24 md:pt-40 bg-background relative z-10 -mt-24 md:-mt-32" // Negative margin to tuck behind Hero; Padding to push content down to visible area
+            className="w-full pb-20 pt-32 md:pt-60 bg-background relative z-10 -mt-24 md:-mt-32" // Negative margin to tuck behind Hero; Padding to push content down to visible area
         >
             <motion.div
                 style={{ y, opacity }}
-                className="container mx-auto px-4 mb-8 flex justify-between items-end"
+                className="w-full max-w-5xl mx-auto px-4 mb-8 flex justify-between items-end"
             >
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="flex items-center justify-center w-4 h-4 rounded-full bg-primary text-[10px] text-primary-foreground font-bold">+</span>
@@ -48,7 +45,7 @@ export function ClientsSection() {
             <div className="container mx-auto px-4">
                 <motion.div
                     style={{ y, opacity }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full"
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1 w-full max-w-5xl mx-auto"
                 >
                     {CLIENTS.map((client, index) => (
                         <div

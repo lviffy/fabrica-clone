@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { BottomBlurOverlay } from "@/components/layout/BottomBlurOverlay";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Header />
           {children}
         </SmoothScroll>
+        <BottomBlurOverlay />
       </body>
     </html>
   );
